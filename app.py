@@ -137,17 +137,16 @@ def send_email_otp(email, otp):
         return False
 
 def send_sms_otp(mobile, otp):
-    """Send OTP via SMS using Twilio"""
+    """Send OTP via SMS (Development Mode)"""
     try:
-        if TWILIO_ACCOUNT_SID and TWILIO_AUTH_TOKEN:
-            client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
-            message = client.messages.create(
-                body=f"Your District Growth verification OTP is: {otp}. Valid for 10 minutes.",
-                from_=TWILIO_PHONE_NUMBER,
-                to=mobile
-            )
-            return True
-        return False
+        # Store OTP in session for development/demo purposes
+        session['dev_otp'] = otp
+        # Log the OTP (remove in production)
+        print(f"Development Mode - SMS OTP for {mobile}: {otp}")
+        
+        # In production, implement your preferred SMS service here
+        # For now, we'll return True to simulate successful sending
+        return True
     except Exception as e:
         print(f"SMS error: {str(e)}")
         return False
@@ -854,6 +853,17 @@ def logout():
     session.pop('id', None)
     session.pop('username', None)
     return redirect(url_for('index'))
+
+@app.route('/dev/get-otp')
+def dev_get_otp():
+    """Development only: Get the latest OTP"""
+    if app.debug:  # Only works in debug mode
+        return jsonify({
+            'success': True,
+            'otp': session.get('dev_otp', 'No OTP generated yet'),
+            'note': 'This is a development feature only'
+        })
+    return jsonify({'success': False, 'message': 'Not available in production'})
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
