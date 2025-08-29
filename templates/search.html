@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+
+{% block title %}Search Professionals - District Growth{% endblock %}
+
+{% block content %}
+<div class="search-container">
+    <h2>Find Professionals in Your District</h2>
+    <p>Search for professionals by profession, location, education, or experience level.</p>
+    
+    <div class="search-filters">
+        <div class="form-group">
+            <label for="searchProfession">Profession</label>
+            <select id="searchProfession" class="form-control">
+                <option value="">All Professions</option>
+                <option value="Software Engineer">Software Engineer</option>
+                <option value="Web Developer">Web Developer</option>
+                <option value="Data Scientist">Data Scientist</option>
+                <option value="Mobile Developer">Mobile Developer</option>
+                <option value="DevOps Engineer">DevOps Engineer</option>
+                <option value="UI/UX Designer">UI/UX Designer</option>
+                <option value="Product Manager">Product Manager</option>
+                <option value="Digital Marketing Specialist">Digital Marketing Specialist</option>
+                <option value="Business Analyst">Business Analyst</option>
+                <option value="Project Manager">Project Manager</option>
+                <option value="Doctor">Doctor</option>
+                <option value="Nurse">Nurse</option>
+                <option value="Pharmacist">Pharmacist</option>
+                <option value="Healthcare Administrator">Healthcare Administrator</option>
+                <option value="Teacher">Teacher</option>
+                <option value="Professor">Professor</option>
+                <option value="Education Administrator">Education Administrator</option>
+                <option value="Civil Engineer">Civil Engineer</option>
+                <option value="Mechanical Engineer">Mechanical Engineer</option>
+                <option value="Electrical Engineer">Electrical Engineer</option>
+                <option value="Lawyer">Lawyer</option>
+                <option value="Accountant">Accountant</option>
+                <option value="Financial Analyst">Financial Analyst</option>
+                <option value="Consultant">Consultant</option>
+                <option value="Entrepreneur">Entrepreneur</option>
+                <option value="Government Officer">Government Officer</option>
+                <option value="Non-profit Worker">Non-profit Worker</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="searchLocation">Location</label>
+            <input type="text" id="searchLocation" class="form-control" 
+                   placeholder="Enter city or district">
+        </div>
+        
+        <div class="form-group">
+            <label for="searchEducation">Education</label>
+            <select id="searchEducation" class="form-control">
+                <option value="">All Education Levels</option>
+                <option value="High School">High School</option>
+                <option value="Diploma">Diploma</option>
+                <option value="Bachelor's Degree">Bachelor's Degree</option>
+                <option value="Master's Degree">Master's Degree</option>
+                <option value="PhD">PhD</option>
+                <option value="Professional Certification">Professional Certification</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="searchExperience">Minimum Experience</label>
+            <select id="searchExperience" class="form-control">
+                <option value="">Any Experience</option>
+                <option value="0">Fresher</option>
+                <option value="1">1+ years</option>
+                <option value="3">3+ years</option>
+                <option value="5">5+ years</option>
+                <option value="8">8+ years</option>
+                <option value="10">10+ years</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="text-center">
+        <button id="searchButton" class="btn btn-primary">
+            🔍 Search Professionals
+        </button>
+        <button id="clearSearch" class="btn btn-secondary">
+            Clear Filters
+        </button>
+    </div>
+</div>
+
+<div class="card">
+    <h3>Search Results</h3>
+    <div id="searchResults" class="results-container">
+        <p class="text-center">Enter search criteria above to find professionals.</p>
+    </div>
+</div>
+
+<div class="card">
+    <h3>Search Tips</h3>
+    <div class="form-row">
+        <div>
+            <h4>🎯 Be Specific</h4>
+            <p>Use specific profession names for more accurate results. For example, "Software Engineer" instead of just "Engineer".</p>
+        </div>
+        <div>
+            <h4>🌍 Location Search</h4>
+            <p>Search by city, district, or region to find professionals in your area for easier networking.</p>
+        </div>
+        <div>
+            <h4>📚 Filter by Education</h4>
+            <p>Filter by education level to find professionals with similar academic backgrounds.</p>
+        </div>
+        <div>
+            <h4>⏰ Experience Level</h4>
+            <p>Use experience filters to find peers at your career level or mentors with more experience.</p>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <h3>Popular Searches</h3>
+    <div class="form-row">
+        <div>
+            <h4>💻 Technology</h4>
+            <p><strong>Most Searched:</strong> Software Engineer, Web Developer, Data Scientist, UI/UX Designer</p>
+            <button onclick="quickSearch('Software Engineer')" class="btn btn-primary">Find Software Engineers</button>
+        </div>
+        <div>
+            <h4>🏥 Healthcare</h4>
+            <p><strong>Most Searched:</strong> Doctor, Nurse, Pharmacist, Healthcare Administrator</p>
+            <button onclick="quickSearch('Doctor')" class="btn btn-primary">Find Doctors</button>
+        </div>
+        <div>
+            <h4>🎓 Education</h4>
+            <p><strong>Most Searched:</strong> Teacher, Professor, Education Administrator</p>
+            <button onclick="quickSearch('Teacher')" class="btn btn-primary">Find Teachers</button>
+        </div>
+        <div>
+            <h4>🏗️ Engineering</h4>
+            <p><strong>Most Searched:</strong> Civil Engineer, Mechanical Engineer, Electrical Engineer</p>
+            <button onclick="quickSearch('Civil Engineer')" class="btn btn-primary">Find Civil Engineers</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function quickSearch(profession) {
+    document.getElementById('searchProfession').value = profession;
+    handleSearch();
+}
+</script>
+{% endblock %}

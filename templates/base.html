@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}PALWAL REUNION - Professional Network{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="PALWAL REUNION - A premium platform to connect professionals and celebrate career growth in Palwal district">
+    <meta name="keywords" content="palwal reunion, professional network, palwal district, career, jobs, skills, networking">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="{{ url_for('index') }}" style="color: white; text-decoration: none;">
+                    <i class="fas fa-crown"></i> PALWAL REUNION
+                </a>
+            </div>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="{{ url_for('index') }}"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="{{ url_for('search') }}"><i class="fas fa-search"></i> Find Professionals</a></li>
+                    <li><a href="{{ url_for('analytics') }}"><i class="fas fa-chart-line"></i> Analytics</a></li>
+                    <li><a href="{{ url_for('mla_vision') }}"><i class="fas fa-lightbulb"></i> Vision</a></li>
+                    <li><a href="{{ url_for('developers') }}"><i class="fas fa-code"></i> Developers</a></li>
+                    <li><a href="{{ url_for('feedback') }}"><i class="fas fa-comments"></i> Feedback</a></li>
+                    {% if session.loggedin %}
+                        <li><a href="{{ url_for('profile') }}"><i class="fas fa-user"></i> My Profile</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+            
+            <div class="auth-buttons">
+                {% if session.loggedin %}
+                    <span style="color: white; margin-right: 1rem;">Welcome, {{ session.username }}!</span>
+                    <a href="{{ url_for('logout') }}" class="btn btn-secondary">Logout</a>
+                {% else %}
+                    <a href="{{ url_for('login') }}" class="btn btn-secondary">Login</a>
+                    <a href="{{ url_for('register') }}" class="btn btn-primary">Register</a>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 PALWAL REUNION Platform. Empowering professional connections and celebrating Palwal's talent.</p>
+            <p>Built with <i class="fas fa-heart" style="color: #e74c3c;"></i> by <strong>Ganesh Foujdar</strong> for Palwal community growth and professional excellence.</p>
+            <p style="margin-top: 10px; opacity: 0.8;">Proudly representing Palwal District | Supported by MLA Shri Gaurav Gautam's Vision</p>
+            <p style="margin-top: 8px; opacity: 0.7; font-size: 0.9rem;">Lead Developer: Ganesh Foujdar | Palwal, Haryana</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

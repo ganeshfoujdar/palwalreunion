@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}PALWAL REUNION - Home{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1><i class="fas fa-crown"></i> Welcome to PALWAL REUNION</h1>
+    <p>Connecting Palwal's finest professionals, celebrating achievements, and building a stronger district together. Where talent meets opportunity in the heart of Haryana.</p>
+    {% if not session.loggedin %}
+        <a href="{{ url_for('register') }}" class="btn btn-primary">Get Started</a>
+        <a href="{{ url_for('search') }}" class="btn btn-secondary">Explore Professionals</a>
+    {% else %}
+        <a href="{{ url_for('profile') }}" class="btn btn-primary">Update My Profile</a>
+        <a href="{{ url_for('search') }}" class="btn btn-secondary">Find Professionals</a>
+    {% endif %}
+</div>
+
+<div class="analytics-grid">
+    <div class="card">
+        <h2><i class="fas fa-search"></i> Discover Talent</h2>
+        <p>Find exceptional professionals from Palwal district by profession, location, education, or experience. Connect with achievers and discover golden career opportunities in our thriving community.</p>
+        <a href="{{ url_for('search') }}" class="btn btn-primary">Explore Talent</a>
+    </div>
+
+    <div class="card">
+        <h2><i class="fas fa-user-crown"></i> Elite Profiles</h2>
+        <p>Create your premium professional profile and join Palwal's distinguished network. Showcase your achievements, skills, and expertise to connect with fellow excellence-driven professionals.</p>
+        {% if session.loggedin %}
+            <a href="{{ url_for('profile') }}" class="btn btn-primary">Enhance Profile</a>
+        {% else %}
+            <a href="{{ url_for('register') }}" class="btn btn-primary">Join Elite Network</a>
+        {% endif %}
+    </div>
+
+    <div class="card">
+        <h2><i class="fas fa-chart-line"></i> Growth Insights</h2>
+        <p>Explore comprehensive analytics showcasing Palwal's professional excellence and growth trajectory. Discover trends, opportunities, and celebrate our district's remarkable progress.</p>
+        <a href="{{ url_for('analytics') }}" class="btn btn-primary">View Insights</a>
+    </div>
+</div>
+
+<div class="card">
+    <h2><i class="fas fa-rocket"></i> Your Journey to Excellence</h2>
+    <div class="analytics-grid">
+        <div>
+            <h3><i class="fas fa-user-plus"></i> 1. Join the Elite Circle</h3>
+            <p>Register and craft your distinguished professional profile showcasing your achievements, expertise, and aspirations within Palwal's premier network.</p>
+        </div>
+        <div>
+            <h3><i class="fas fa-handshake"></i> 2. Connect & Collaborate</h3>
+            <p>Discover and connect with like-minded professionals, industry leaders, and innovators. Build meaningful relationships that drive success.</p>
+        </div>
+        <div>
+            <h3><i class="fas fa-trophy"></i> 3. Celebrate Success</h3>
+            <p>Track and celebrate Palwal's collective professional growth. Be part of the success story that puts our district on the map.</p>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <h2>🎯 Key Features</h2>
+    <div class="form-row">
+        <div>
+            <h4>✅ Professional Networking</h4>
+            <p>Connect with professionals in various fields including Software Engineering, Healthcare, Education, Business, and more.</p>
+        </div>
+        <div>
+            <h4>✅ Career Opportunities</h4>
+            <p>Discover job opportunities and career growth paths within your district and nearby areas.</p>
+        </div>
+        <div>
+            <h4>✅ Skill Development</h4>
+            <p>Find mentors and peers to help develop your skills and advance your career.</p>
+        </div>
+        <div>
+            <h4>✅ District Insights</h4>
+            <p>Get valuable insights into professional trends and growth patterns in your district.</p>
+        </div>
+    </div>
+</div>
+
+{% if not session.loggedin %}
+<div class="card text-center">
+    <h2>Ready to Get Started?</h2>
+    <p>Join our growing community of professionals and contribute to your district's development.</p>
+    <div class="auth-buttons" style="justify-content: center;">
+        <a href="{{ url_for('register') }}" class="btn btn-success">Register Now</a>
+        <a href="{{ url_for('login') }}" class="btn btn-primary">Login</a>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+
+{% block title %}My Profile - District Growth{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>My Professional Profile</h2>
+    <p>Complete your profile to connect with other professionals and showcase your expertise.</p>
+    
+    <form id="profileForm">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="full_name">Full Name *</label>
+                <input type="text" id="full_name" name="full_name" class="form-control" required 
+                       placeholder="Enter your full name">
+            </div>
+            
+            <div class="form-group">
+                <label for="profile_email">Email Address *</label>
+                <input type="email" id="profile_email" name="profile_email" class="form-control" required
+                       placeholder="Enter your professional email">
+                <small style="color: #666;">This email will be visible to other professionals for networking.</small>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" class="form-control" 
+                       placeholder="Enter your phone number">
+            </div>
+            
+            <div class="form-group" style="display: flex; align-items: center; justify-content: center;">
+                <div style="text-align: center; color: #666;">
+                    <small>📧 Professional email helps others contact you directly</small>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="profession">Profession *</label>
+                <select id="profession" name="profession" class="form-control" required>
+                    <option value="">Select your profession</option>
+                    <option value="Software Engineer">Software Engineer</option>
+                    <option value="Web Developer">Web Developer</option>
+                    <option value="Data Scientist">Data Scientist</option>
+                    <option value="Mobile Developer">Mobile Developer</option>
+                    <option value="DevOps Engineer">DevOps Engineer</option>
+                    <option value="UI/UX Designer">UI/UX Designer</option>
+                    <option value="Product Manager">Product Manager</option>
+                    <option value="Digital Marketing Specialist">Digital Marketing Specialist</option>
+                    <option value="Business Analyst">Business Analyst</option>
+                    <option value="Project Manager">Project Manager</option>
+                    <option value="Doctor">Doctor</option>
+                    <option value="Nurse">Nurse</option>
+                    <option value="Pharmacist">Pharmacist</option>
+                    <option value="Healthcare Administrator">Healthcare Administrator</option>
+                    <option value="Teacher">Teacher</option>
+                    <option value="Professor">Professor</option>
+                    <option value="Education Administrator">Education Administrator</option>
+                    <option value="Civil Engineer">Civil Engineer</option>
+                    <option value="Mechanical Engineer">Mechanical Engineer</option>
+                    <option value="Electrical Engineer">Electrical Engineer</option>
+                    <option value="Lawyer">Lawyer</option>
+                    <option value="Accountant">Accountant</option>
+                    <option value="Financial Analyst">Financial Analyst</option>
+                    <option value="Consultant">Consultant</option>
+                    <option value="Entrepreneur">Entrepreneur</option>
+                    <option value="Government Officer">Government Officer</option>
+                    <option value="Non-profit Worker">Non-profit Worker</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="company">Current Company/Organization</label>
+                <input type="text" id="company" name="company" class="form-control" 
+                       placeholder="Enter your current workplace">
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="experience">Years of Experience *</label>
+                <select id="experience" name="experience" class="form-control" required>
+                    <option value="">Select experience level</option>
+                    <option value="0">Fresher (0 years)</option>
+                    <option value="1">1 year</option>
+                    <option value="2">2 years</option>
+                    <option value="3">3 years</option>
+                    <option value="4">4 years</option>
+                    <option value="5">5 years</option>
+                    <option value="6">6-7 years</option>
+                    <option value="8">8-10 years</option>
+                    <option value="11">11-15 years</option>
+                    <option value="16">15+ years</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="salary_range">Salary Range (Optional)</label>
+                <select id="salary_range" name="salary_range" class="form-control">
+                    <option value="">Select salary range</option>
+                    <option value="0-3 LPA">0-3 LPA</option>
+                    <option value="3-5 LPA">3-5 LPA</option>
+                    <option value="5-8 LPA">5-8 LPA</option>
+                    <option value="8-12 LPA">8-12 LPA</option>
+                    <option value="12-20 LPA">12-20 LPA</option>
+                    <option value="20-30 LPA">20-30 LPA</option>
+                    <option value="30+ LPA">30+ LPA</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="education">Education *</label>
+            <select id="education" name="education" class="form-control" required>
+                <option value="">Select your highest education</option>
+                <option value="High School">High School</option>
+                <option value="Diploma">Diploma</option>
+                <option value="Bachelor's Degree">Bachelor's Degree</option>
+                <option value="Master's Degree">Master's Degree</option>
+                <option value="PhD">PhD</option>
+                <option value="Professional Certification">Professional Certification</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="current_location">Current Location *</label>
+            <input type="text" id="current_location" name="current_location" class="form-control" required 
+                   placeholder="Enter your current city/district">
+        </div>
+        
+        <div class="form-group">
+            <label for="skills">Skills & Technologies *</label>
+            <textarea id="skills" name="skills" class="form-control" rows="3" required 
+                      placeholder="List your key skills, technologies, and expertise (e.g., Python, React, Project Management, Digital Marketing)"></textarea>
+            <small style="color: #666;">Separate skills with commas for better searchability.</small>
+        </div>
+        
+        <div class="form-group">
+            <label for="availability">Current Availability *</label>
+            <select id="availability" name="availability" class="form-control" required>
+                <option value="">Select availability status</option>
+                <option value="Available">Available for new opportunities</option>
+                <option value="Open to Opportunities">Open to opportunities</option>
+                <option value="Not Available">Not looking for opportunities</option>
+            </select>
+        </div>
+        
+        <div class="text-center">
+            <button type="submit" class="btn btn-success">
+                Save Profile
+            </button>
+            <a href="{{ url_for('search') }}" class="btn btn-primary">
+                Search Professionals
+            </a>
+        </div>
+    </form>
+</div>
+
+<div class="card">
+    <h3>Profile Tips</h3>
+    <div class="form-row">
+        <div>
+            <h4>🎯 Complete Your Profile</h4>
+            <p>A complete profile increases your visibility and helps other professionals find you more easily.</p>
+        </div>
+        <div>
+            <h4>🔍 Use Keywords</h4>
+            <p>Include relevant keywords in your skills section to appear in more search results.</p>
+        </div>
+        <div>
+            <h4>🌍 Location Matters</h4>
+            <p>Specify your exact location to connect with professionals in your area.</p>
+        </div>
+        <div>
+            <h4>⚡ Stay Updated</h4>
+            <p>Regularly update your profile with new skills, experience, and availability status.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

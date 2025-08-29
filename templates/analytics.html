@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block title %}Palwal Analytics - PALWAL REUNION{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2><i class="fas fa-chart-line"></i> Palwal Professional Excellence Analytics</h2>
+    <p>Discover comprehensive insights showcasing professional growth, talent distribution, and success trends in Palwal district.</p>
+</div>
+
+<div id="analyticsContent">
+    <div class="loading">
+        <div class="spinner"></div>
+        <p style="margin-left: 1rem;">Loading analytics data...</p>
+    </div>
+</div>
+
+<div class="card">
+    <h3><i class="fas fa-info-circle"></i> Understanding Palwal's Professional Landscape</h3>
+    <div class="form-row">
+        <div>
+            <h4><i class="fas fa-chart-pie"></i> Professional Distribution</h4>
+            <p>Explore how Palwal's talented professionals are distributed across various sectors, identifying our district's strongest industries.</p>
+        </div>
+        <div>
+            <h4><i class="fas fa-map-marked-alt"></i> Geographic Excellence</h4>
+            <p>Discover how professional talent is distributed across Palwal's towns and villages, showcasing our comprehensive coverage.</p>
+        </div>
+        <div>
+            <h4>🎓 Education Trends</h4>
+            <p>Analyze education levels to identify skill development opportunities and gaps.</p>
+        </div>
+        <div>
+            <h4>⏳ Experience Levels</h4>
+            <p>Understand the experience distribution to identify mentorship opportunities and career growth patterns.</p>
+        </div>
+    </div>
+</div>
+
+<div class="analytics-grid">
+    <div class="card">
+        <h3>🎯 Key Insights</h3>
+        <ul style="padding-left: 2rem;">
+            <li><strong>Growth Opportunities:</strong> Identify emerging professions and skill gaps</li>
+            <li><strong>Networking:</strong> Find areas with high professional concentration</li>
+            <li><strong>Career Planning:</strong> Understand experience distribution in your field</li>
+            <li><strong>Education:</strong> See correlation between education levels and career success</li>
+            <li><strong>Location Trends:</strong> Discover professional hotspots in your district</li>
+        </ul>
+    </div>
+    
+    <div class="card">
+        <h3>📊 How to Use Analytics</h3>
+        <ol style="padding-left: 2rem;">
+            <li><strong>Identify Trends:</strong> Look for growing professions in your area</li>
+            <li><strong>Find Opportunities:</strong> Spot underrepresented fields with potential</li>
+            <li><strong>Network Strategically:</strong> Connect with professionals in growing sectors</li>
+            <li><strong>Plan Career:</strong> Use data to make informed career decisions</li>
+            <li><strong>Mentorship:</strong> Find experienced professionals in your field</li>
+        </ol>
+    </div>
+</div>
+
+<div class="card">
+    <h3>🚀 District Development Impact</h3>
+    <div class="form-row">
+        <div>
+            <h4>Economic Growth</h4>
+            <p>Professional diversity and skill development contribute to economic growth and attract new businesses to the district.</p>
+        </div>
+        <div>
+            <h4>Innovation Hub</h4>
+            <p>A strong professional network fosters innovation, collaboration, and knowledge sharing across different sectors.</p>
+        </div>
+        <div>
+            <h4>Talent Retention</h4>
+            <p>Active professional communities help retain local talent and attract new skilled professionals to the area.</p>
+        </div>
+        <div>
+            <h4>Skill Development</h4>
+            <p>Understanding skill gaps helps educational institutions and training centers develop relevant programs.</p>
+        </div>
+    </div>
+</div>
+
+<div class="card text-center">
+    <h3><i class="fas fa-hands-helping"></i> Join Palwal's Professional Excellence Story</h3>
+    <p>Your elite professional profile enriches these analytics and helps showcase the complete spectrum of Palwal's remarkable capabilities and achievements.</p>
+    <div class="auth-buttons" style="justify-content: center;">
+        {% if session.loggedin %}
+            <a href="{{ url_for('profile') }}" class="btn btn-primary">Update My Profile</a>
+            <a href="{{ url_for('search') }}" class="btn btn-secondary">Find Professionals</a>
+        {% else %}
+            <a href="{{ url_for('register') }}" class="btn btn-success">Join Our Community</a>
+            <a href="{{ url_for('login') }}" class="btn btn-primary">Login</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

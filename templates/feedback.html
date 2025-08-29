@@ -1,0 +1,309 @@
+{% extends "base.html" %}
+
+{% block title %}Feedback & Suggestions - PALWAL REUNION{% endblock %}
+
+{% block content %}
+<div class="hero" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);">
+    <h1><i class="fas fa-comments"></i> Your Voice Matters</h1>
+    <p>Help us improve PALWAL REUNION with your valuable feedback, suggestions, and ideas. Together, we build a better platform for our community.</p>
+</div>
+
+<div class="analytics-grid">
+    <div class="card" style="background: linear-gradient(145deg, #e8f5e8 0%, #ffffff 100%); border-left: 5px solid #27ae60;">
+        <h3><i class="fas fa-lightbulb" style="color: #f39c12;"></i> Feature Requests</h3>
+        <p>Have ideas for new features that could make PALWAL REUNION even better? We'd love to hear them!</p>
+    </div>
+    
+    <div class="card" style="background: linear-gradient(145deg, #e8f4fd 0%, #ffffff 100%); border-left: 5px solid #3498db;">
+        <h3><i class="fas fa-bug" style="color: #e74c3c;"></i> Bug Reports</h3>
+        <p>Found something that's not working correctly? Help us fix it by reporting any issues you encounter.</p>
+    </div>
+    
+    <div class="card" style="background: linear-gradient(145deg, #fdf2e9 0%, #ffffff 100%); border-left: 5px solid #f39c12;">
+        <h3><i class="fas fa-heart" style="color: #e74c3c;"></i> General Feedback</h3>
+        <p>Share your overall experience, suggestions for improvement, or appreciation for the platform.</p>
+    </div>
+</div>
+
+<div class="card">
+    <h2><i class="fas fa-envelope"></i> Submit Your Feedback</h2>
+    <p>Your input helps us continuously improve PALWAL REUNION for the entire community.</p>
+    
+    <form id="feedbackForm">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="name">Your Name *</label>
+                <input type="text" id="name" name="name" class="form-control" required 
+                       placeholder="Enter your full name">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" class="form-control" required 
+                       placeholder="Enter your email address">
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="feedback_type">Feedback Type *</label>
+                <select id="feedback_type" name="feedback_type" class="form-control" required>
+                    <option value="">Select feedback type</option>
+                    <option value="Feature Request">💡 Feature Request</option>
+                    <option value="Bug Report">🐛 Bug Report</option>
+                    <option value="General Feedback">💬 General Feedback</option>
+                    <option value="Suggestion">✨ Suggestion</option>
+                    <option value="Complaint">⚠️ Complaint</option>
+                    <option value="Appreciation">❤️ Appreciation</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="rating">Rate Your Experience (Optional)</label>
+                <select id="rating" name="rating" class="form-control">
+                    <option value="">Select rating</option>
+                    <option value="5">⭐⭐⭐⭐⭐ Excellent (5/5)</option>
+                    <option value="4">⭐⭐⭐⭐ Very Good (4/5)</option>
+                    <option value="3">⭐⭐⭐ Good (3/5)</option>
+                    <option value="2">⭐⭐ Fair (2/5)</option>
+                    <option value="1">⭐ Needs Improvement (1/5)</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="subject">Subject *</label>
+            <input type="text" id="subject" name="subject" class="form-control" required 
+                   placeholder="Brief summary of your feedback">
+        </div>
+        
+        <div class="form-group">
+            <label for="message">Detailed Message *</label>
+            <textarea id="message" name="message" class="form-control" rows="5" required 
+                      placeholder="Please provide detailed feedback, suggestions, or describe any issues you encountered..."></textarea>
+            <small style="color: #666;">Be as specific as possible to help us understand and address your feedback effectively.</small>
+        </div>
+        
+        <div class="text-center">
+            <button type="submit" class="btn btn-success">
+                <i class="fas fa-paper-plane"></i> Submit Feedback
+            </button>
+            <button type="reset" class="btn btn-secondary">
+                <i class="fas fa-undo"></i> Clear Form
+            </button>
+        </div>
+    </form>
+</div>
+
+<div class="card" style="background: linear-gradient(145deg, #fff3cd 0%, #ffffff 100%); border-left: 5px solid #f39c12;">
+    <h3><i class="fas fa-info-circle"></i> Feedback Guidelines</h3>
+    <div class="analytics-grid">
+        <div>
+            <h4><i class="fas fa-check-circle" style="color: #27ae60;"></i> For Bug Reports</h4>
+            <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+                <li>Describe what you were trying to do</li>
+                <li>Explain what happened vs. what you expected</li>
+                <li>Include browser and device information if possible</li>
+                <li>Mention if the issue is reproducible</li>
+            </ul>
+        </div>
+        <div>
+            <h4><i class="fas fa-star" style="color: #f39c12;"></i> For Feature Requests</h4>
+            <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+                <li>Explain the problem you're trying to solve</li>
+                <li>Describe your proposed solution</li>
+                <li>Mention how it would benefit the community</li>
+                <li>Include any examples or references</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="analytics-grid">
+    <div class="card" style="background: linear-gradient(145deg, #e8f5e8 0%, #ffffff 100%); text-align: center;">
+        <h3><i class="fas fa-clock" style="color: #3498db;"></i> Response Time</h3>
+        <p><strong>We Respond Within:</strong></p>
+        <div style="margin: 1rem 0;">
+            <div style="margin-bottom: 0.5rem;"><span style="color: #e74c3c; font-weight: 600;">🔴 Critical Issues:</span> 24 hours</div>
+            <div style="margin-bottom: 0.5rem;"><span style="color: #f39c12; font-weight: 600;">🟡 General Feedback:</span> 3-5 days</div>
+            <div style="margin-bottom: 0.5rem;"><span style="color: #27ae60; font-weight: 600;">🟢 Feature Requests:</span> 1-2 weeks</div>
+        </div>
+        <p style="font-size: 0.9rem; color: #7f8c8d;">Response times may vary based on complexity and current workload.</p>
+    </div>
+
+    <div class="card" style="background: linear-gradient(145deg, #f8f9fa 0%, #e9ecef 100%); text-align: center;">
+        <h3><i class="fas fa-handshake" style="color: #667eea;"></i> Community Driven</h3>
+        <p><strong>Built by Community, For Community</strong></p>
+        <p>Your feedback directly influences platform development. Every suggestion is carefully considered and many are implemented based on community needs.</p>
+        <p style="font-weight: 600; color: #2c3e50; margin-top: 1rem;">Your voice shapes our future!</p>
+    </div>
+</div>
+
+<div class="card" style="background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); color: white;">
+    <h3 style="color: white;"><i class="fas fa-trophy"></i> Recent Improvements Based on User Feedback</h3>
+    <div class="analytics-grid">
+        <div>
+            <h4><i class="fas fa-mobile-alt"></i> Mobile Optimization</h4>
+            <p>Enhanced mobile responsiveness based on user requests for better smartphone experience.</p>
+        </div>
+        <div>
+            <h4><i class="fas fa-search-plus"></i> Advanced Search</h4>
+            <p>Added multiple search filters after users requested more granular search options.</p>
+        </div>
+        <div>
+            <h4><i class="fas fa-palette"></i> Design Enhancements</h4>
+            <p>Improved visual design and user interface based on community aesthetic feedback.</p>
+        </div>
+        <div>
+            <h4><i class="fas fa-bolt"></i> Performance Boost</h4>
+            <p>Optimized loading speeds and database queries based on performance feedback.</p>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <h3><i class="fas fa-quote-left"></i> Message from Ganesh Foujdar</h3>
+    <blockquote style="font-size: 1.1rem; font-style: italic; color: #34495e; border-left: 4px solid #667eea; padding-left: 2rem; margin: 2rem 0;">
+        "PALWAL REUNION is a community-driven platform, and your feedback is the fuel that drives its continuous evolution. Every bug report helps us fix issues faster, every feature request helps us build what you actually need, and every piece of appreciation motivates us to keep innovating.
+        <br><br>
+        I personally read every single feedback submission and consider each one carefully. Your insights help me understand how the platform is being used in the real world and what improvements would make the biggest impact.
+        <br><br>
+        Thank you for taking the time to share your thoughts. Together, we're building something truly special for Palwal's professional community."
+    </blockquote>
+    <div style="text-align: right; margin-top: 2rem;">
+        <p style="font-weight: 600; color: #2c3e50;">- Ganesh Foujdar</p>
+        <p style="color: #7f8c8d;">Lead Developer, PALWAL REUNION</p>
+    </div>
+</div>
+
+<div class="analytics-grid">
+    <div class="card" style="background: linear-gradient(145deg, #f0f8ff 0%, #ffffff 100%); text-align: center;">
+        <h3><i class="fas fa-question-circle" style="color: #3498db;"></i> Frequently Asked Questions</h3>
+        <div style="text-align: left; margin-top: 1rem;">
+            <div style="margin-bottom: 1rem;">
+                <h5 style="color: #2c3e50;">Q: Is my data secure on this platform?</h5>
+                <p style="color: #7f8c8d; margin-left: 1rem;">A: Yes, we use industry-standard security measures including password hashing and secure database storage.</p>
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <h5 style="color: #2c3e50;">Q: Can I suggest new profession categories?</h5>
+                <p style="color: #7f8c8d; margin-left: 1rem;">A: Absolutely! Use the feature request option to suggest new professions or categories.</p>
+            </div>
+            <div>
+                <h5 style="color: #2c3e50;">Q: How do I report inappropriate content?</h5>
+                <p style="color: #7f8c8d; margin-left: 1rem;">A: Use the complaint option or send us a detailed message through this feedback form.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" style="background: linear-gradient(145deg, #fff0f5 0%, #ffffff 100%); text-align: center;">
+        <h3><i class="fas fa-envelope" style="color: #e74c3c;"></i> Alternative Contact</h3>
+        <p><strong>Prefer Direct Communication?</strong></p>
+        <div style="margin: 1rem 0;">
+            <p><i class="fas fa-dev" style="color: #667eea;"></i> <strong>For Technical Issues:</strong></p>
+            <p style="font-size: 0.9rem; color: #7f8c8d;">Reach out through the Developers page</p>
+        </div>
+        <div style="margin: 1rem 0;">
+            <p><i class="fas fa-users" style="color: #27ae60;"></i> <strong>For Community Matters:</strong></p>
+            <p style="font-size: 0.9rem; color: #7f8c8d;">Connect through local Palwal professional groups</p>
+        </div>
+    </div>
+</div>
+
+<div class="card text-center" style="background: linear-gradient(135deg, #56ab2f 0%, #a8e6cf 100%); color: white;">
+    <h2 style="color: white;"><i class="fas fa-hands-helping"></i> Thank You for Your Support</h2>
+    <p style="color: white; opacity: 0.95; font-size: 1.1rem;">
+        Your feedback is invaluable in making PALWAL REUNION the best professional networking platform for our district. Every suggestion counts towards building a stronger community.
+    </p>
+    <div class="auth-buttons" style="justify-content: center; margin-top: 2rem;">
+        <a href="{{ url_for('index') }}" class="btn btn-primary">Explore Platform</a>
+        <a href="{{ url_for('developers') }}" class="btn btn-secondary">Meet the Developer</a>
+    </div>
+</div>
+
+<div class="card">
+    <h3><i class="fas fa-chart-line"></i> Your Impact on Platform Development</h3>
+    <div class="form-row">
+        <div>
+            <h4><i class="fas fa-users"></i> Community Feedback</h4>
+            <p>User suggestions have led to 80% of our recent feature implementations, making this truly a community-driven platform.</p>
+        </div>
+        <div>
+            <h4><i class="fas fa-rocket"></i> Rapid Iteration</h4>
+            <p>We release updates frequently based on user feedback, ensuring the platform evolves with community needs.</p>
+        </div>
+        <div>
+            <h4><i class="fas fa-heart"></i> User-Centric Design</h4>
+            <p>Every design decision is validated through user feedback to ensure optimal user experience.</p>
+        </div>
+        <div>
+            <h4><i class="fas fa-star"></i> Quality Assurance</h4>
+            <p>Bug reports help us maintain high quality standards and deliver a reliable platform experience.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Feedback form handling
+async function handleFeedbackSubmit(event) {
+    event.preventDefault();
+    
+    const formData = new FormData(event.target);
+    const feedbackData = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        feedback_type: formData.get('feedback_type'),
+        subject: formData.get('subject'),
+        message: formData.get('message'),
+        rating: parseInt(formData.get('rating')) || 0
+    };
+    
+    try {
+        const result = await apiRequest('/api/feedback', 'POST', feedbackData);
+        
+        if (result.success) {
+            showMessage('Thank you! Your feedback has been submitted successfully. We appreciate your input!', 'success');
+            event.target.reset(); // Clear the form
+        } else {
+            showMessage(result.message, 'error');
+        }
+    } catch (error) {
+        showMessage('Failed to submit feedback. Please try again.', 'error');
+    }
+}
+
+// Add event listener when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    const feedbackForm = document.getElementById('feedbackForm');
+    if (feedbackForm) {
+        feedbackForm.addEventListener('submit', handleFeedbackSubmit);
+    }
+    
+    // Auto-fill name and email if user is logged in
+    const loggedInUser = '{{ session.username if session.loggedin else "" }}';
+    if (loggedInUser) {
+        document.getElementById('name').value = loggedInUser;
+    }
+});
+
+// Character counter for message
+document.getElementById('message').addEventListener('input', function() {
+    const maxLength = 1000;
+    const currentLength = this.value.length;
+    const remaining = maxLength - currentLength;
+    
+    // Create or update character counter
+    let counter = document.getElementById('char-counter');
+    if (!counter) {
+        counter = document.createElement('small');
+        counter.id = 'char-counter';
+        counter.style.color = '#7f8c8d';
+        this.parentNode.appendChild(counter);
+    }
+    
+    counter.textContent = `${currentLength}/${maxLength} characters`;
+    counter.style.color = remaining < 50 ? '#e74c3c' : '#7f8c8d';
+});
+</script>
+{% endblock %}

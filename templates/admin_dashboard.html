@@ -1,0 +1,264 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard - District Growth{% endblock %}
+
+{% block content %}
+<div class="admin-header" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem 0; margin: -2rem -2rem 2rem -2rem;">
+    <div class="container">
+        <h1>🛠️ Admin Dashboard</h1>
+        <p>District Growth Professional Network - Management Portal</p>
+        <div style="margin-top: 1rem;">
+            <span id="adminWelcome">Welcome, Administrator</span> | 
+            <a href="/admin/logout" style="color: #fff; text-decoration: underline;">Logout</a>
+        </div>
+    </div>
+</div>
+
+<div class="admin-stats" style="margin-bottom: 2rem;">
+    <div class="analytics-grid">
+        <div class="stat-card">
+            <div class="stat-number" id="totalUsers">-</div>
+            <div class="stat-label">Total Users</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" id="totalProfiles">-</div>
+            <div class="stat-label">Complete Profiles</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" id="todayRegistrations">-</div>
+            <div class="stat-label">Today's Registrations</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" id="totalFeedback">-</div>
+            <div class="stat-label">Feedback Received</div>
+        </div>
+    </div>
+</div>
+
+<div class="admin-tabs" style="margin-bottom: 2rem;">
+    <div class="tab-buttons" style="display: flex; gap: 10px; margin-bottom: 2rem; flex-wrap: wrap;">
+        <button class="tab-btn active" data-tab="users">👥 Users</button>
+        <button class="tab-btn" data-tab="profiles">📋 Profiles</button>
+        <button class="tab-btn" data-tab="feedback">💬 Feedback</button>
+        <button class="tab-btn" data-tab="analytics">📊 Analytics</button>
+        <button class="tab-btn" data-tab="export">📥 Export Data</button>
+    </div>
+    
+    <!-- Users Tab -->
+    <div class="tab-content active" id="users-tab">
+        <div class="card">
+            <div class="card-header" style="display: flex; justify-content: between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <h3>User Management</h3>
+                <div class="search-filters" style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                    <input type="text" id="userSearch" placeholder="Search users..." style="padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                    <select id="userFilter" style="padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                        <option value="">All Users</option>
+                        <option value="active">Active</option>
+                        <option value="pending">Pending</option>
+                        <option value="suspended">Suspended</option>
+                    </select>
+                    <button class="btn btn-primary" onclick="searchUsers()">Search</button>
+                </div>
+            </div>
+            <div id="usersTable">
+                <div class="loading-placeholder">Loading users...</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Profiles Tab -->
+    <div class="tab-content" id="profiles-tab">
+        <div class="card">
+            <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <h3>Professional Profiles</h3>
+                <div class="search-filters" style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                    <input type="text" id="profileSearch" placeholder="Search profiles..." style="padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                    <select id="professionFilter" style="padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                        <option value="">All Professions</option>
+                    </select>
+                    <button class="btn btn-primary" onclick="searchProfiles()">Search</button>
+                </div>
+            </div>
+            <div id="profilesTable">
+                <div class="loading-placeholder">Loading profiles...</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Feedback Tab -->
+    <div class="tab-content" id="feedback-tab">
+        <div class="card">
+            <h3>Feedback & Suggestions</h3>
+            <div id="feedbackTable">
+                <div class="loading-placeholder">Loading feedback...</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Analytics Tab -->
+    <div class="tab-content" id="analytics-tab">
+        <div class="card">
+            <h3>District Growth Analytics</h3>
+            <div id="adminAnalytics">
+                <div class="loading-placeholder">Loading analytics...</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Export Tab -->
+    <div class="tab-content" id="export-tab">
+        <div class="card">
+            <h3>Export Data</h3>
+            <div class="export-options" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                <div class="export-card" style="border: 1px solid #e1e5e9; padding: 20px; border-radius: 8px;">
+                    <h4>📊 User Data Export</h4>
+                    <p>Export all user registration data with verification status.</p>
+                    <button class="btn btn-success" onclick="exportData('users')">Export Users (CSV)</button>
+                </div>
+                
+                <div class="export-card" style="border: 1px solid #e1e5e9; padding: 20px; border-radius: 8px;">
+                    <h4>👔 Professional Profiles</h4>
+                    <p>Export complete professional profile data for analysis.</p>
+                    <button class="btn btn-success" onclick="exportData('profiles')">Export Profiles (CSV)</button>
+                </div>
+                
+                <div class="export-card" style="border: 1px solid #e1e5e9; padding: 20px; border-radius: 8px;">
+                    <h4>💬 Feedback Data</h4>
+                    <p>Export all feedback and suggestions from users.</p>
+                    <button class="btn btn-success" onclick="exportData('feedback')">Export Feedback (CSV)</button>
+                </div>
+                
+                <div class="export-card" style="border: 1px solid #e1e5e9; padding: 20px; border-radius: 8px;">
+                    <h4>📈 Analytics Report</h4>
+                    <p>Export comprehensive analytics and growth metrics.</p>
+                    <button class="btn btn-primary" onclick="exportData('analytics')">Export Analytics (PDF)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.tab-buttons {
+    border-bottom: 2px solid #e1e5e9;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    font-weight: 500;
+    color: #666;
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    color: #667eea;
+    border-bottom-color: #667eea;
+}
+
+.tab-btn:hover {
+    background: #f8f9fa;
+    color: #333;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.data-table th,
+.data-table td {
+    text-align: left;
+    padding: 12px;
+    border-bottom: 1px solid #e1e5e9;
+}
+
+.data-table th {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #333;
+}
+
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.status-active {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status-pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.status-suspended {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.loading-placeholder {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+    font-style: italic;
+}
+
+.card-header {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e1e5e9;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .admin-header {
+        margin: -1rem -1rem 1rem -1rem;
+        padding: 1rem;
+    }
+    
+    .tab-buttons {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 10px;
+    }
+    
+    .tab-btn {
+        white-space: nowrap;
+        min-width: fit-content;
+    }
+    
+    .card-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .search-filters {
+        width: 100%;
+        justify-content: stretch;
+    }
+    
+    .search-filters > * {
+        flex: 1;
+        min-width: 120px;
+    }
+}
+</style>
+
+<script src="/static/js/admin_dashboard.js"></script>
+{% endblock %}

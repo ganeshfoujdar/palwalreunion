@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Login - District Growth{% endblock %}
+
+{% block content %}
+<div class="card" style="max-width: 400px; margin: 4rem auto;">
+    <h2 class="text-center" style="color: #333;">🔐 Admin Access</h2>
+    <p class="text-center mb-4" style="color: #666;">Management Team & Administrators</p>
+    
+    <form id="adminLoginForm">
+        <div class="form-group">
+            <label for="admin_username">Username</label>
+            <input type="text" id="admin_username" name="username" class="form-control" required 
+                   placeholder="Enter your admin username">
+        </div>
+        
+        <div class="form-group">
+            <label for="admin_password">Password</label>
+            <input type="password" id="admin_password" name="password" class="form-control" required 
+                   placeholder="Enter your admin password">
+        </div>
+        
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">
+            Admin Login
+        </button>
+        
+        <div class="text-center">
+            <small style="color: #666;">
+                Authorized personnel only<br>
+                <a href="{{ url_for('index') }}">← Back to Main Site</a>
+            </small>
+        </div>
+    </form>
+</div>
+
+<div class="card" style="max-width: 400px; margin: 2rem auto;">
+    <h4>Default Admin Accounts</h4>
+    <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; font-family: monospace; font-size: 0.9rem;">
+        <strong>Super Admin:</strong><br>
+        Username: admin<br>
+        Password: admin123<br><br>
+        
+        <strong>Manager:</strong><br>
+        Username: manager1<br>
+        Password: manager123<br><br>
+        
+        <strong>Viewer:</strong><br>
+        Username: viewer1<br>
+        Password: viewer123
+    </div>
+    <small style="color: #666; margin-top: 10px; display: block;">
+        ⚠️ Change default passwords in production environment
+    </small>
+</div>
+
+<script>
+// Admin Login JavaScript
+document.getElementById('adminLoginForm').addEventListener('submit', async function(event) {
+    event.preventDefault();
+    
+    const formData = new FormData(event.target);
+    const loginData = {
+        username: formData.get('username'),
+        password: formData.get('password')
+    };
+    
+    try {
+        const response = await fetch('/api/admin-login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(loginData)
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+            showMessage('Admin login successful! Redirecting...', 'success');
+            setTimeout(() => {
+                window.location.href = '/admin/dashboard';
+            }, 1500);
+        } else {
+            showMessage(result.message, 'error');
+        }
+    } catch (error) {
+        showMessage('Login failed. Please try again.', 'error');
+    }
+});
+
+function showMessage(message, type = 'info') {
+    const alertDiv = document.createElement('div');
+    alertDiv.className = `alert alert-${type}`;
+    alertDiv.textContent = message;
+    
+    // Remove existing alerts
+    const existingAlerts = document.querySelectorAll('.alert');
+    existingAlerts.forEach(alert => alert.remove());
+    
+    // Add new alert to the top of container
+    const container = document.querySelector('.container');
+    container.insertBefore(alertDiv, container.firstChild);
+    
+    // Auto-hide after 5 seconds
+    setTimeout(() => {
+        alertDiv.remove();
+    }, 5000);
+}
+</script>
+{% endblock %}

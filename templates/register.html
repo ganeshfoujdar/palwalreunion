@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% block title %}Register - District Growth{% endblock %}
+
+{% block content %}
+<div class="card" style="max-width: 600px; margin: 2rem auto;">
+    <h2 class="text-center">Create Your Account</h2>
+    <p class="text-center mb-4">Join our professional community and start networking in your district.</p>
+    
+    <form id="registerForm">
+        <div class="form-group">
+            <label for="username">Username *</label>
+            <input type="text" id="username" name="username" class="form-control" required 
+                   placeholder="Choose a unique username" minlength="3">
+            <small style="color: #666;">Minimum 3 characters. This will be your unique identifier.</small>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" class="form-control" required 
+                   placeholder="Enter your email address">
+            <small style="color: #666;">We'll use this to send you important updates.</small>
+        </div>
+        
+        <div class="form-group">
+            <label for="mobile">Mobile Number *</label>
+            <input type="tel" id="mobile" name="mobile" class="form-control" required 
+                   placeholder="Enter mobile number (+91xxxxxxxxxx)" pattern="[+][0-9]{12,13}">
+            <small style="color: #666;">Include country code. Example: +919876543210</small>
+        </div>
+        
+        <div class="form-group" id="otpSection" style="display: none;">
+            <label for="otp">OTP Verification</label>
+            <div class="otp-input-group" style="display: flex; gap: 10px; align-items: center;">
+                <input type="text" id="otp" name="otp" class="form-control" 
+                       placeholder="Enter 6-digit OTP" maxlength="6" style="flex: 1;">
+                <button type="button" class="btn btn-primary" id="sendOtpBtn">Send OTP</button>
+                <button type="button" class="btn btn-success" id="verifyOtpBtn" style="display: none;">Verify</button>
+            </div>
+            <div id="otpTimer" class="otp-timer" style="color: #28a745; margin-top: 5px; display: none;">OTP sent! Resend available in <span id="countdown">60</span> seconds</div>
+            <div id="otpVerified" style="color: #28a745; margin-top: 5px; display: none;">✓ OTP Verified Successfully!</div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="password">Password *</label>
+                <input type="password" id="password" name="password" class="form-control" required 
+                       placeholder="Create a strong password" minlength="6">
+                <small style="color: #666;">Minimum 6 characters.</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password *</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" required 
+                       placeholder="Confirm your password" minlength="6">
+                <small style="color: #666;">Must match your password.</small>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label>
+                <input type="checkbox" required style="margin-right: 0.5rem;">
+                I agree to the Terms of Service and Privacy Policy
+            </label>
+        </div>
+        
+        <button type="submit" class="btn btn-success" style="width: 100%;">
+            Create Account
+        </button>
+    </form>
+    
+    <hr style="margin: 2rem 0;">
+    
+    <div class="text-center">
+        <p>Already have an account?</p>
+        <a href="{{ url_for('login') }}" class="btn btn-secondary">Login Here</a>
+    </div>
+</div>
+
+<div class="card" style="max-width: 600px; margin: 2rem auto;">
+    <h3>What happens next?</h3>
+    <div class="analytics-grid" style="grid-template-columns: 1fr;">
+        <div>
+            <h4>1. Complete Your Profile</h4>
+            <p>After registration, you'll be able to create your professional profile with your skills, education, and experience.</p>
+        </div>
+        <div>
+            <h4>2. Start Networking</h4>
+            <p>Search for professionals in your district, connect with them, and discover career opportunities.</p>
+        </div>
+        <div>
+            <h4>3. Track Growth</h4>
+            <p>Access analytics and insights about professional growth trends in your district.</p>
+        </div>
+    </div>
+</div>
+
+<div class="card" style="max-width: 600px; margin: 2rem auto;">
+    <h3>Professional Categories We Cover</h3>
+    <div class="form-row">
+        <div>
+            <h5>Technology</h5>
+            <p>Software Engineers, Data Scientists, Web Developers, IT Specialists</p>
+        </div>
+        <div>
+            <h5>Healthcare</h5>
+            <p>Doctors, Nurses, Pharmacists, Healthcare Administrators</p>
+        </div>
+        <div>
+            <h5>Education</h5>
+            <p>Teachers, Professors, Administrators, Educational Consultants</p>
+        </div>
+        <div>
+            <h5>Business</h5>
+            <p>Managers, Consultants, Entrepreneurs, Marketing Professionals</p>
+        </div>
+        <div>
+            <h5>Engineering</h5>
+            <p>Civil Engineers, Mechanical Engineers, Electrical Engineers</p>
+        </div>
+        <div>
+            <h5>And Many More!</h5>
+            <p>Finance, Legal, Government, Non-profit, Arts, and other sectors</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
