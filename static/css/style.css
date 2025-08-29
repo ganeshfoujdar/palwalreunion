@@ -1,3 +1,4 @@
+
 /* District Growth Application - Main Stylesheet */
 
 /* Reset and Base Styles */
@@ -283,6 +284,7 @@ body {
     outline: none;
     border-color: #667eea;
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    background: rgba(102, 126, 234, 0.02);
 }
 
 .form-row {
@@ -475,82 +477,207 @@ body {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-    .nav-container {
-        flex-direction: column;
-        gap: 1rem;
+/* Large Tablets and Small Desktops */
+@media screen and (max-width: 1200px) {
+    .container {
+        max-width: 95%;
         padding: 1rem;
     }
+    
+    .analytics-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .hero {
+        padding: 4rem 0;
+    }
+}
 
+/* Tablets */
+@media screen and (max-width: 992px) {
+    .nav-container {
+        padding: 0 1rem;
+    }
+    
+    .logo {
+        font-size: 1.7rem;
+    }
+    
     .nav-menu {
         gap: 1rem;
     }
-
-    .hero h1 {
-        font-size: 2rem;
+    
+    .nav-menu a {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
     }
-
-    .form-row {
-        grid-template-columns: 1fr;
+    
+    .btn {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
     }
-
-    .search-filters {
-        grid-template-columns: 1fr;
-    }
-
-    .results-container {
-        grid-template-columns: 1fr;
-    }
-
-    .analytics-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .container {
-        padding: 1rem;
-    }
-
-    .auth-buttons {
-        flex-direction: column;
-        align-items: center;
+    
+    .card {
+        padding: 1.5rem;
     }
 }
 
-@media (max-width: 480px) {
-    .hero {
-        padding: 2rem 0;
+/* Mobile Devices */
+@media screen and (max-width: 768px) {
+    .header {
+        padding: 0.5rem 0;
     }
-
+    
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .logo {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .nav-menu {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.5rem;
+    }
+    
+    .nav-menu li {
+        width: 100%;
+    }
+    
+    .nav-menu a {
+        display: block;
+        text-align: center;
+        padding: 0.8rem;
+        border-radius: 5px;
+        background: rgba(255,255,255,0.1);
+    }
+    
+    .auth-buttons {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.5rem;
+    }
+    
+    .auth-buttons a {
+        width: 100%;
+    }
+    
+    .hero {
+        padding: 3rem 1rem;
+        margin: -1rem -1rem 1rem -1rem;
+    }
+    
     .hero h1 {
         font-size: 1.8rem;
     }
-
+    
+    .hero p {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+    
+    .analytics-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
     .card {
         padding: 1rem;
+        margin-bottom: 1rem;
     }
-
-    .result-header {
-        flex-direction: column;
-        align-items: flex-start;
+    
+    .profile-image {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .btn {
+        width: 100%;
+        margin: 0.25rem 0;
     }
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-    width: 8px;
+/* Small Mobile Devices */
+@media screen and (max-width: 480px) {
+    body {
+        font-size: 0.9rem;
+    }
+    
+    .logo {
+        font-size: 1.3rem;
+    }
+    
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+    
+    .card {
+        padding: 0.8rem;
+    }
+    
+    .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+    
+    .profile-image {
+        width: 120px;
+        height: 120px;
+    }
 }
 
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
+/* Print Styles */
+@media print {
+    .header,
+    .nav-menu,
+    .auth-buttons,
+    .footer {
+        display: none;
+    }
+    
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .container {
+        max-width: 100%;
+        padding: 0;
+    }
+    
+    .card {
+        break-inside: avoid;
+        border: 1px solid #ddd;
+    }
 }
 
-::-webkit-scrollbar-thumb {
-    background: #667eea;
-    border-radius: 10px;
+/* Landscape Mode Optimization */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        padding: 2rem 0;
+    }
+    
+    .nav-container {
+        padding: 0.5rem;
+    }
+    
+    .nav-menu {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: #764ba2;
+/* High-DPI (Retina) Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .profile-image img,
+    .card img {
+        image-rendering: -webkit-optimize-contrast;
+    }
 }
 
 /* Utility Classes */
